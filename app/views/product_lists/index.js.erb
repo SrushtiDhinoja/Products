@@ -1,0 +1,8 @@
+<% if @product_lists.present? %>
+  $('div#product-list').empty().append('<b>Products</b><br>');
+  <% @product_lists.each do |product| %>
+  $('div#product-list').append('<%= product.product_name %><br>');
+  <% end %>
+<% else %>
+    $('div#product-list').empty().append("<span> No Products Found!!!</span>");
+<% end%>

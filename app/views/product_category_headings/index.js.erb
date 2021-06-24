@@ -1,0 +1,16 @@
+$("select#product").empty();
+$("div#product-list").empty();
+$("select#product").append('<option>---Select Headings---</option>');
+<% @product_category_headings.each do |heading| %>
+  $("select#product").append('<option value="<%= heading.id %>" ><%= heading.category_heading %></option>');
+<% end %>
+$("select#product").on('change', function () {
+  $("div#product-list").empty();
+  var id = $(this).val();
+  $.ajax({
+    type: "get",
+    url: "/product_category_headings/"+id+"/product_lists",
+    dataType: "script",
+    data: ""
+  });
+});

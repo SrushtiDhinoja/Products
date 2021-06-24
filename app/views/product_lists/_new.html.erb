@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel">Add Product</h4>
+</div>
+<div class="modal-body">
+  <%= form_tag({:controller => '/product_lists'}, :method => "post" , remote: true) do %>
+    <%= text_field_tag :product_name %>
+    <%= submit_tag "Create Product", class: "btn btn-primary" %>
+    <% @product_list.errors.each do |error| %>
+      <div id="error"><%= error.full_message %></div>
+    <% end %>
+  <% end %>
+</div>

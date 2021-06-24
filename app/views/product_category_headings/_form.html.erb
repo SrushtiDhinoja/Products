@@ -1,0 +1,30 @@
+<%= form_with(model: product_category_heading) do |form| %>
+  <% if product_category_heading.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product_category_heading.errors.count, "error") %> prohibited this product_category_heading from being saved:</h2>
+
+      <ul>
+        <% product_category_heading.errors.each do |error| %>
+          <div id="error"><%= error.full_message %></div>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_category_heading %>
+    <%= form.text_field :category_heading, class:"form-control col-sm-2"%>
+  </div>
+
+  <h3>Add Categories</h3>
+  <%= form.fields_for :product_categories do |category|%>
+    <%= render 'product_category_fields', f: category %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'Add ProductCategory', form, :product_categories ,class: "btn btn-secondary"%>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>

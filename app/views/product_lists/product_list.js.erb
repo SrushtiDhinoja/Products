@@ -1,0 +1,4 @@
+$('div#product-list').empty().append('<b>Products</b><br>');
+<% @products.each do |product| %>
+$('div#product-list').append('<%= product.product_name %><br>');
+<% end %>

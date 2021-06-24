@@ -1,0 +1,14 @@
+
+<%=form_for [@product_category,@product] do |form| %>
+  <div>
+    <%= form.label :ProductName %><br>
+    <%= form.text_field :product_name , class: "form-control col-sm-2"%>
+  </div>
+  <% @product.errors.each do |error| %>
+      <div id="error" ><%= error.full_message %></div>
+    <% end %>
+  <br>
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

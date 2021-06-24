@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<h2>Product Category Headings</h2>
+<p>
+  <strong>Category Heading:</strong>
+  <%= @product_category_heading.category_heading %>
+</p>
+
+<h3 style="margin-left: 10px;" >Product Category</h3>
+<div style="margin-left: 20px;"> 
+  <% @product_category_heading.product_categories.each do |category| %>
+    <p>
+      <strong>Product Category</strong>
+      <%= category.cname %>
+    </p>
+  <% end %>
+</div>
+<%= link_to 'Edit', edit_product_category_heading_path(@product_category_heading) %> |
+<%= link_to 'Back', product_category_headings_path %>

@@ -1,0 +1,16 @@
+$("select#product").empty();
+$("div#product-list").empty();
+$("select#product").append('<option>---Select Categories---</option>');
+<% @product_categories.each do |category| %>
+  $("select#product").append('<option value="<%= category.id %>"><%= category.cname %></option>');
+<% end %>
+$("select#product").on('change', function () {
+  $("div#product-list").empty();
+  var id = $(this).val();
+  $.ajax({
+    type: "get",
+    url: "/product_categories/"+id+"/product_lists",
+    dataType: "script",
+    data: ""
+  });
+});
